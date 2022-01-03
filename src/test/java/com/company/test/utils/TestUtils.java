@@ -36,24 +36,4 @@ public final class TestUtils {
         String locationScript = String.format(LOCATION_SCRIPT_FORMAT, OFFER_LATITUDE, OFFER_LONGITUDE);
         ((JavascriptExecutor) webDriver).executeScript(locationScript);
     }
-
-    public static List<String> findFiles(Path path, String fileExtension)
-            throws IOException {
-
-        if (!Files.isDirectory(path)) {
-            throw new IllegalArgumentException("Path must be a directory!");
-        }
-
-        List<String> result;
-
-        try (Stream<Path> walk = Files.walk(path)) {
-            result = walk
-                    .filter(p -> !Files.isDirectory(p))
-                    .map(p -> p.toString().toLowerCase())
-                    .filter(f -> f.endsWith(fileExtension))
-                    .collect(Collectors.toList());
-        }
-
-        return result;
-    }
 }

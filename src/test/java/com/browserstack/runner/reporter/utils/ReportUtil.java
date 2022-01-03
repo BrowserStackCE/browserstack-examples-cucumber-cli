@@ -57,7 +57,7 @@ public class ReportUtil {
 
                     scenario.setFeatureId(scenario.getScenarioId().substring(0, scenario.getScenarioId().indexOf(";")));
                     if(scenario.getBefore() != null && scenario.getBefore().size() > 0) {
-                        scenario.setPlatformName(scenario.getBefore().get(0).getOutput().get(0).substring(TestHooks.LOG_PLATFORM_FOR_REPORT.length()-2).trim());
+                        scenario.setPlatformName(scenario.getBefore().get(0).getOutput().get(0).substring(ReporterConstants.LOG_PLATFORM_FOR_REPORT.length()-2).trim());
                     }
 
                     scenario.setRerun(isRerun);

@@ -6,7 +6,6 @@ import com.browserstack.runner.reporter.utils.ReporterConstants;
 import com.browserstack.runner.utils.RunnerUtils;
 import com.browserstack.webdriver.config.Platform;
 import com.browserstack.webdriver.core.WebDriverFactory;
-import com.company.test.utils.TestUtils;
 import io.cucumber.core.cli.CommandlineOptions;
 import io.cucumber.core.cli.Main;
 import org.junit.runner.Description;
@@ -82,7 +81,7 @@ public class CucumberCLIRunner extends Runner {
 
         String absolutePath = Paths.get(System.getProperty("user.dir")).toAbsolutePath().toString();
         String featuresParentDirectory = absolutePath + File.separator + featureFilePath;
-        List<String> files = TestUtils.findFiles(Paths.get(featuresParentDirectory), "feature");
+        List<String> files = RunnerUtils.findFiles(Paths.get(featuresParentDirectory), "feature");
 
         webDriverFactory.getPlatforms().forEach(platform -> {
             platformList.add(platform);
@@ -128,7 +127,7 @@ public class CucumberCLIRunner extends Runner {
     private void createRerunFailedExecutorPools() throws IOException {
 
         ExecutorService pool = Executors.newFixedThreadPool(customMaxRunnersCount);
-        List<String> files = TestUtils.findFiles(Paths.get(RERUN_SCENARIOS_DIR), "txt");
+        List<String> files = RunnerUtils.findFiles(Paths.get(RERUN_SCENARIOS_DIR), "txt");
         files.stream().map(File::new).forEach(rerunTxtFile -> {
             Scanner sc;
             try {

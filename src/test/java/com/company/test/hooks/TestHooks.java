@@ -10,11 +10,11 @@ import org.openqa.selenium.TakesScreenshot;
 
 import static com.browserstack.runner.CucumberCLIRunner.webDriverFactory;
 import static com.browserstack.runner.listener.TestEventListener.threadIdObjectsMap;
+import static com.browserstack.runner.reporter.utils.ReporterConstants.LOG_PLATFORM_FOR_REPORT;
 
 
 public class TestHooks {
 
-    public static final String LOG_PLATFORM_FOR_REPORT = "Platform: %s" ;
     private final StepData stepData;
 
     ThreadObjects threadObjects = threadIdObjectsMap.get(Thread.currentThread().getId());
