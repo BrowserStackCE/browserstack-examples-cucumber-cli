@@ -17,17 +17,19 @@ repositories {
 
 
 dependencies {
+
     testImplementation 'com.browserstack:webdriver-framework-core:0.0.1'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
     testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.12.2'
     testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-    testImplementation 'io.cucumber:cucumber-java:7.1.0'
-    testImplementation 'io.cucumber:cucumber-picocontainer:7.1.0'
-    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.1.0'
-    testImplementation 'org.junit.platform:junit-platform-suite:1.8.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testImplementation 'io.cucumber:cucumber-java:6.11.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.1.0'
+    testImplementation 'io.cucumber:cucumber-picocontainer:6.11.0'
     testImplementation 'org.slf4j:slf4j-api:1.7.25'
     testImplementation 'ch.qos.logback:logback-classic:1.2.3'
-    testImplementation group: 'com.github.spullara.mustache.java', name: 'compiler', version: '0.9.10'
+    implementation group: 'com.github.spullara.mustache.java', name: 'compiler', version: '0.9.10'
+
+
 
 }
 
@@ -99,54 +101,6 @@ ext.platformRunner = { taskName, configFile ->
             platformMultiThread, allTests)
     task.main = "com.browserstack.ParallelPlatformTest"
     task.classpath = sourceSets["test"].runtimeClasspath
-}
-
-task 'on-prem'(type: Test) {
-    def taskName = 'on-prem'
-    setupRunner(taskName, featureParallel)
-    configure(taskName, cucumberCommon, 'capabilities-on-prem.yml',
-            cucumberCommon, featureParallel, featureSingleThread,
-            platformSingleThread, singleTest)
-}
-
-task 'on-prem-suite'(type: Test) {
-    def taskName = 'on-prem-suite'
-    setupRunner(taskName, featureParallel)
-    configure(taskName, cucumberCommon, 'capabilities-on-prem-suite.yml',
-            cucumberCommon, featureParallel, featureSingleThread,
-            platformSingleThread, allTests)
-}
-
-task 'docker'(type: Test) {
-    def taskName = 'docker'
-    setupRunner(taskName, featureParallel)
-    configure(taskName, cucumberCommon, 'capabilities-docker.yml',
-            cucumberCommon, featureParallel, featureSingleThread,
-            platformSingleThread, singleTest)
-}
-
-task 'docker-parallel'(type: Test) {
-    def taskName = 'docker-parallel'
-    setupRunner(taskName, featureParallel)
-    configure(taskName, cucumberCommon, 'capabilities-docker-parallel.yml',
-            cucumberCommon, featureParallel, featureMultiThread,
-            platformSingleThread, allTests)
-}
-
-task 'bstack-single'(type: Test) {
-    def taskName = 'bstack-single'
-    setupRunner(taskName, featureParallel)
-    configure(taskName, cucumberCommon, 'capabilities-single.yml',
-            cucumberCommon, featureParallel, featureSingleThread,
-            platformSingleThread, singleTest)
-}
-
-task 'bstack-local'(type: Test) {
-    def taskName = 'bstack-local'
-    setupRunner(taskName, featureParallel)
-    configure(taskName, cucumberCommon, 'capabilities-local.yml',
-            cucumberCommon, featureParallel, featureSingleThread,
-            platformSingleThread, singleTest)
 }
 
 task 'bstack-local-parallel'(type: Test) {
