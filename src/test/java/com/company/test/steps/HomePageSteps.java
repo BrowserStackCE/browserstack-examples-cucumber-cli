@@ -4,6 +4,7 @@ import com.company.test.utils.TestUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -54,7 +55,7 @@ public class HomePageSteps {
         WebDriverWait wait = new WebDriverWait(stepData.getWebDriver(), 5);
         try {
             String loggedInUser = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".username"))).getText();
-            assertEquals(user, loggedInUser);
+            Assert.assertEquals(user, loggedInUser);
         } catch (NoSuchElementException e) {
             throw new AssertionError(user + " is not logged in");
         }
@@ -66,7 +67,7 @@ public class HomePageSteps {
             WebDriverWait wait = new WebDriverWait(stepData.getWebDriver(), 5);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("logout")));
             String src = stepData.getWebDriver().findElement(By.cssSelector("img[alt='iPhone 12']")).getAttribute("src");
-            assertNotEquals("", src);
+            Assert.assertNotEquals("", src);
         } catch (NoSuchElementException e) {
             throw new AssertionError("Error in page load");
         }
@@ -78,7 +79,7 @@ public class HomePageSteps {
             WebDriverWait webDriverWait = new WebDriverWait(stepData.getWebDriver(), 5);
             webDriverWait.until(waitWebDriver -> waitWebDriver.findElements(By.cssSelector(".spinner")).isEmpty());
             List<String> values = stepData.getWebDriver().findElements(By.cssSelector(".shelf-item__title")).stream().map(WebElement::getText).collect(Collectors.toList());
-            assertEquals(productCount, values.size());
+            Assert.assertEquals(productCount, values.size());
         } catch (NoSuchElementException e) {
             throw new AssertionError("Error in page load");
         }
@@ -90,7 +91,7 @@ public class HomePageSteps {
             WebDriverWait webDriverWait = new WebDriverWait(stepData.getWebDriver(), 5);
             webDriverWait.until(waitWebDriver -> waitWebDriver.findElements(By.cssSelector(".spinner")).isEmpty());
             List<WebElement> priceWebElement = stepData.getWebDriver().findElements(By.cssSelector(".shelf-item__price > div.val > b"));
-            assertTrue(TestUtils.isAscendingOrder(priceWebElement, priceWebElement.size()));
+            Assert.assertTrue(TestUtils.isAscendingOrder(priceWebElement, priceWebElement.size()));
         } catch (NoSuchElementException e) {
             throw new AssertionError("Error in page load");
         }

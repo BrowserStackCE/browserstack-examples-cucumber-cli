@@ -1,6 +1,9 @@
 package com.company.test.utils;
 
 
+import com.browserstack.runner.CucumberCLIRunner;
+import com.browserstack.runner.RunCucumberTest;
+import com.browserstack.runner.reporter.utils.ReportUtil;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,5 +38,10 @@ public final class TestUtils {
     public static void mockGPS(WebDriver webDriver) {
         String locationScript = String.format(LOCATION_SCRIPT_FORMAT, OFFER_LATITUDE, OFFER_LONGITUDE);
         ((JavascriptExecutor) webDriver).executeScript(locationScript);
+    }
+
+    public static void main(String[] args) {
+        System.setProperty("capabilities.config", "conf/capabilities-parallel-browsers.yml");
+        (new ReportUtil()).create(new CucumberCLIRunner(RunCucumberTest.class));
     }
 }

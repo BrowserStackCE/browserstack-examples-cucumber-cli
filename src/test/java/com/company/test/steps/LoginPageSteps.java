@@ -4,6 +4,8 @@ import com.company.test.utils.TestUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -28,7 +30,7 @@ public class LoginPageSteps {
         WebDriverWait wait = new WebDriverWait(stepData.getWebDriver(), 5);
         try {
             String errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".api-error"))).getText();
-            assertEquals(expectedMessage, errorMessage);
+            Assert.assertEquals(expectedMessage, errorMessage);
         } catch (NoSuchElementException e) {
             throw new AssertionError("Error in logging in");
         }

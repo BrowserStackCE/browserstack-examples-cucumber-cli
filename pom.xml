@@ -8,6 +8,16 @@
     <artifactId>bstack-examples-cucumber-junit5</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>bstack-cucumber-cli-runner</id>-->
+<!--            <name>bstack-cucumber-cli-runner</name>-->
+<!--            <url>file://${project.basedir}/libs</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+
+
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -24,55 +34,44 @@
         <mustache-java.version>0.9.10</mustache-java.version>
         <parallel.custom.runners>10</parallel.custom.runners>
         <parallel.cucumber.runners>5</parallel.cucumber.runners>
-        <single.threads.count>1</single.threads.count>
         <capabilities.config.file>capabilities-parallel-browsers.yml</capabilities.config.file>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+
+
     <dependencies>
-        <dependency>
-            <groupId>com.browserstack</groupId>
-            <artifactId>webdriver-framework-core</artifactId>
-            <version>${wedriver.core.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -83,17 +82,23 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.spullara.mustache.java</groupId>
             <artifactId>compiler</artifactId>
             <version>${mustache-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>webdriver-framework-core</artifactId>
+            <version>${wedriver.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>bstack-cucumber-cli-runner</artifactId>
+            <version>0.0.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/com/browserstack/runner/bstack-cucumber-cli-runner-0.0.1.jar</systemPath>
         </dependency>
     </dependencies>
 

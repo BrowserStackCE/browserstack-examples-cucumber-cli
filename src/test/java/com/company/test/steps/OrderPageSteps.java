@@ -1,6 +1,7 @@
 package com.company.test.steps;
 
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -27,7 +28,7 @@ public class OrderPageSteps {
         try {
             element = stepData.getWebDriver().findElement(By.cssSelector("#__next > main > div > div"));
             List<WebElement> orders = element.findElements(By.tagName("div"));
-            assertNotEquals(0, orders.size());
+            Assert.assertNotEquals(0, orders.size());
         } catch (NoSuchElementException e) {
             throw new AssertionError("There are no orders");
         }

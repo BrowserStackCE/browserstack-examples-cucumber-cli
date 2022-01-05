@@ -1,6 +1,7 @@
 package com.company.test.steps;
 
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -23,7 +24,7 @@ public class OfferPageSteps {
         wait.until(ExpectedConditions.urlContains("offers"));
         try {
             WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".p-6")));
-            assertNotNull(element);
+            Assert.assertNotNull(element);
         } catch (NoSuchElementException e) {
             throw new AssertionError("There are no offers in your region.");
         }
