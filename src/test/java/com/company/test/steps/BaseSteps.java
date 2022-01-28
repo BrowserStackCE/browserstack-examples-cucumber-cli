@@ -11,8 +11,7 @@ public class BaseSteps {
     }
 
     public String getUrl(){
-        System.out.println("Test URL: " + WebDriverRunner.getTestEndpoint());
-        return WebDriverRunner.getTestEndpoint(); // "https://bstackdemo.com";
+        return WebDriverRunner.getTestEndpoint();
     }
 
 }

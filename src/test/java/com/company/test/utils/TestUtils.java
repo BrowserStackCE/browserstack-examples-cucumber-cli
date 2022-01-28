@@ -32,9 +32,4 @@ public final class TestUtils {
         String locationScript = String.format(LOCATION_SCRIPT_FORMAT, OFFER_LATITUDE, OFFER_LONGITUDE);
         ((JavascriptExecutor) webDriver).executeScript(locationScript);
     }
-
-//    public static void main(String[] args) {
-//        System.setProperty("capabilities.config", "conf/capabilities-parallel-browsers.yml");
-//        (new ReportUtil()).create(new CucumberCLIRunner(RunCucumberTest.class));
-//    }
 }
