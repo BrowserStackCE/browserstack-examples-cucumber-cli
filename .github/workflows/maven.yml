@@ -26,12 +26,13 @@ jobs:
       with:
         repository: BrowserStackCE/bstack-cucumber-cli-runner
         ref: enhanced_runner_v2
+    - name: Clean build package with Maven
       run: mvn clean install
-#    - name: BrowserStack Env Setup
-#      uses: browserstack/github-actions/setup-env@master
-#      with:
-#        username: ${{ secrets.BROWSERSTACK_USERNAME }}
-#        access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+    - name: BrowserStack Env Setup
+      uses: browserstack/github-actions/setup-env@master
+      with:
+        username: ${{ secrets.BROWSERSTACK_USERNAME }}
+        access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
     - uses: actions/checkout@v2
     - name: Test with Maven
       run: mvn test -P bstack-parallel-browsers
