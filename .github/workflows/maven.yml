@@ -25,7 +25,7 @@ jobs:
     - name: Pull BStack Cucumber CLI runner
       uses: actions/checkout@v2
       with:
-        name: BrowserStackCE/bstack-cucumber-cli-runner
+        repository: BrowserStackCE/bstack-cucumber-cli-runner
         ref: enhanced_runner_v2
     - name: Test with Maven
       run: mvn test -P bstack-parallel-browsers
