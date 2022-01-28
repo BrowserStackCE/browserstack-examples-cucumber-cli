@@ -10,17 +10,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertNotNull;
 
-public class OfferPageSteps {
-
-    private final StepData stepData;
-
-    public OfferPageSteps(StepData stepData) {
-        this.stepData = stepData;
-    }
+public class OfferPageSteps extends BaseSteps {
 
     @Then("I should see Offer elements")
     public void iShouldSeeOfferElements() {
-        WebDriverWait wait = new WebDriverWait(stepData.getWebDriver(), 5);
+        WebDriverWait wait = new WebDriverWait(getWebDriver(), 5);
         wait.until(ExpectedConditions.urlContains("offers"));
         try {
             WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".p-6")));

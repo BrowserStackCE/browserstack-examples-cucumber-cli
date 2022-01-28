@@ -12,22 +12,16 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPageSteps {
-
-    private final StepData stepData;
-
-    public LoginPageSteps(StepData stepData) {
-        this.stepData = stepData;
-    }
+public class LoginPageSteps extends BaseSteps {
 
     @And("I press Log In Button")
     public void iPressLogin() {
-        stepData.getWebDriver().findElement(By.cssSelector(".Button_root__24MxS")).click();
+        getWebDriver().findElement(By.cssSelector(".Button_root__24MxS")).click();
     }
 
     @Then("I should see {string} as Login Error Message")
     public void iShouldSeeAsLoginErrorMessage(String expectedMessage) {
-        WebDriverWait wait = new WebDriverWait(stepData.getWebDriver(), 5);
+        WebDriverWait wait = new WebDriverWait(getWebDriver(), 5);
         try {
             String errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".api-error"))).getText();
             Assert.assertEquals(expectedMessage, errorMessage);
@@ -38,16 +32,16 @@ public class LoginPageSteps {
 
     @And("I SignIn as {string} with {string} password")
     public void iSignInAsWithPassword(String username, String password) {
-        WebDriverWait wait = new WebDriverWait(stepData.getWebDriver(), 5);
-        stepData.getWebDriver().findElement(By.linkText("Sign In")).click();
+        WebDriverWait wait = new WebDriverWait(getWebDriver(), 5);
+        getWebDriver().findElement(By.linkText("Sign In")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#username > div > div:nth-child(1)"))).click();
-        stepData.getWebDriver().findElement(By.id("react-select-2-input")).sendKeys(username);
-        stepData.getWebDriver().findElement(By.id("react-select-2-input")).sendKeys(Keys.ENTER);
-        stepData.getWebDriver().findElement(By.cssSelector("#password > div > div:nth-child(1)")).click();
-        stepData.getWebDriver().findElement(By.id("react-select-3-input")).sendKeys(password);
-        stepData.getWebDriver().findElement(By.id("react-select-3-input")).sendKeys(Keys.ENTER);
-        stepData.getWebDriver().findElement(By.cssSelector(".Button_root__24MxS")).click();
-        TestUtils.mockGPS(stepData.getWebDriver());
+        getWebDriver().findElement(By.id("react-select-2-input")).sendKeys(username);
+        getWebDriver().findElement(By.id("react-select-2-input")).sendKeys(Keys.ENTER);
+        getWebDriver().findElement(By.cssSelector("#password > div > div:nth-child(1)")).click();
+        getWebDriver().findElement(By.id("react-select-3-input")).sendKeys(password);
+        getWebDriver().findElement(By.id("react-select-3-input")).sendKeys(Keys.ENTER);
+        getWebDriver().findElement(By.cssSelector(".Button_root__24MxS")).click();
+        TestUtils.mockGPS(getWebDriver());
 
     }
 }

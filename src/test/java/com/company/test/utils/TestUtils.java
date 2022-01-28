@@ -1,19 +1,12 @@
 package com.company.test.utils;
 
 
-import com.browserstack.runner.CucumberCLIRunner;
-import com.browserstack.runner.RunCucumberTest;
-import com.browserstack.runner.reporter.utils.ReportUtil;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public final class TestUtils {
 
@@ -40,8 +33,8 @@ public final class TestUtils {
         ((JavascriptExecutor) webDriver).executeScript(locationScript);
     }
 
-    public static void main(String[] args) {
-        System.setProperty("capabilities.config", "conf/capabilities-parallel-browsers.yml");
-        (new ReportUtil()).create(new CucumberCLIRunner(RunCucumberTest.class));
-    }
+//    public static void main(String[] args) {
+//        System.setProperty("capabilities.config", "conf/capabilities-parallel-browsers.yml");
+//        (new ReportUtil()).create(new CucumberCLIRunner(RunCucumberTest.class));
+//    }
 }

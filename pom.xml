@@ -5,100 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.browserstack</groupId>
-    <artifactId>bstack-examples-cucumber-junit5</artifactId>
+    <artifactId>browserstack-examples-cucumber-cli</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>bstack-cucumber-cli-runner</id>-->
-<!--            <name>bstack-cucumber-cli-runner</name>-->
-<!--            <url>file://${project.basedir}/libs</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
-
-
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <wedriver.core.version>0.0.1</wedriver.core.version>
-        <selenium-java.version>3.141.59</selenium-java.version>
-        <junit.version>4.13.2</junit.version>
-        <junit-platform.version>1.8.2</junit-platform.version>
-        <junit-jupiter.version>5.7.0</junit-jupiter.version>
-        <cucumber.version>7.1.0</cucumber.version>
-        <aspectj.version>1.9.8.M1</aspectj.version>
-        <jackson.version>2.13.1</jackson.version>
-        <slf4j.version>1.7.32</slf4j.version>
-        <logback.version>1.2.3</logback.version>
-        <mustache-java.version>0.9.10</mustache-java.version>
-        <parallel.custom.runners>10</parallel.custom.runners>
-        <parallel.cucumber.runners>5</parallel.cucumber.runners>
         <capabilities.config.file>capabilities-parallel-browsers.yml</capabilities.config.file>
-
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-
-
     <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>${cucumber.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.spullara.mustache.java</groupId>
-            <artifactId>compiler</artifactId>
-            <version>${mustache-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.browserstack</groupId>
-            <artifactId>webdriver-framework-core</artifactId>
-            <version>${wedriver.core.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.browserstack</groupId>
             <artifactId>bstack-cucumber-cli-runner</artifactId>
             <version>0.0.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/com/browserstack/runner/bstack-cucumber-cli-runner-0.0.1.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -109,81 +29,22 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <properties>
-                        <configurationParameters>
-                            cucumber.publish.enabled=false
-                            cucumber.publish.quiet=true
-                        </configurationParameters>
-                    </properties>
                     <systemProperties>
-                        <property>
-                            <name>cucumber.features</name>
-                            <value>src/test/resources/features</value>
-                        </property>
-                        <property>
-                            <name>cucumber.glue</name>
-                            <value>com.company.test</value>
-                        </property>
-                        <property>
-                            <name>cucumber.publish.enabled</name>
-                            <value>false</value>
-                        </property>
                         <property>
                             <name>cucumber.publish.quiet</name>
                             <value>true</value>
                         </property>
                         <property>
-                            <name>cucumber.plugin</name>
-                            <value>com.browserstack.runner.listener.TestEventListener</value>
-                        </property>
-                        <property>
                             <name>capabilities.config</name>
                             <value>${capabilities.config.file}</value>
                         </property>
-                        <property>
-                            <name>parallel.custom.runners</name>
-                            <value>${parallel.custom.runners}</value>
-                        </property>
-                        <property>
-                            <name>parallel.cucumber.runners</name>
-                            <value>${parallel.cucumber.runners}</value>
-                        </property>
-                        <property>
-                            <name>cucumber.version</name>
-                            <value>${cucumber.version}</value>
-                        </property>
-                    </systemProperties>
+                   </systemProperties>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
 
     <profiles>
-        <profile>
-            <id>bstack-local-parallel</id>
-            <properties>
-                <capabilities.config.file>capabilities-local-parallel.yml</capabilities.config.file>
-            </properties>
-        </profile>
-        <profile>
-            <id>bstack-local-parallel-browsers-</id>
-            <properties>
-                <capabilities.config.file>capabilities-local-parallel-browsers.yml</capabilities.config.file>
-            </properties>
-        </profile>
-        <profile>
-            <id>bstack-parallel</id>
-            <properties>
-                <capabilities.config.file>capabilities-parallel.yml</capabilities.config.file>
-            </properties>
-        </profile>
         <profile>
             <id>bstack-parallel-browsers</id>
             <properties>
@@ -191,5 +52,4 @@
             </properties>
         </profile>
     </profiles>
-
 </project>

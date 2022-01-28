@@ -12,21 +12,15 @@ import java.util.List;
 
 import static org.junit.Assert.assertNotEquals;
 
-public class OrderPageSteps {
-
-    private final StepData stepData;
-
-    public OrderPageSteps(StepData stepData) {
-        this.stepData = stepData;
-    }
+public class OrderPageSteps extends BaseSteps {
 
     @Then("I should see elements in list")
     public void iShouldSeeElementsInList() {
-        WebDriverWait wait = new WebDriverWait(stepData.getWebDriver(), 5);
+        WebDriverWait wait = new WebDriverWait(getWebDriver(), 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#logout")));
         WebElement element;
         try {
-            element = stepData.getWebDriver().findElement(By.cssSelector("#__next > main > div > div"));
+            element = getWebDriver().findElement(By.cssSelector("#__next > main > div > div"));
             List<WebElement> orders = element.findElements(By.tagName("div"));
             Assert.assertNotEquals(0, orders.size());
         } catch (NoSuchElementException e) {

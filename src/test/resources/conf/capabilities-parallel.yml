@@ -10,7 +10,7 @@ cloudDriver:
     enable: false
   common_capabilities:
     project: BrowserStack Demo Repository
-    buildPrefix: bstack-examples-cucumber-junit5
+    buildPrefix: browserstack-examples-cucumber-cli
     capabilities:
       browserstack.debug: true
       browserstack.networkLogs: true
