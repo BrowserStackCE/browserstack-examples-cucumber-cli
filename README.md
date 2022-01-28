@@ -1,10 +1,9 @@
-# browserstack-examples-cucumber-cli
-Run all cucumber scenarios in parallel across multiple platforms using Cucumber CLI
-
 <h1 align="center">   :zap: <img src="https://avatars.githubusercontent.com/u/1119453?s=200&v=4" width="60" height="60" > <a href="https://github.com/browserstackce/browserstack-examples-cucumber-cli">BrowserStack Examples Cucumber CLI</a>  <img src="https://avatars.githubusercontent.com/u/320565?s=200&v=4" width="60" height="60" >
  :zap:</h1>
 
-Welcome to BrowserStack Examples Cucumber CLI, a sample [Cucumber CLI Runner](https://github.com/browserstackce/bstack-cucumber-cli-runner) test repository. 
+Welcome to BrowserStack Examples Cucumber CLI, a sample [Cucumber CLI Runner](https://github.com/browserstackce/bstack-cucumber-cli-runner) test repository.
+
+[![Java CI with Maven](https://github.com/BrowserStackCE/browserstack-examples-cucumber-cli/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/BrowserStackCE/browserstack-examples-cucumber-cli/actions/workflows/maven.yml)
 
 ## :pushpin: Prerequisites
 Ensure you have the following dependencies installed on the machine
