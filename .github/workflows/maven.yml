@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Pull BStack Cucumber CLI runner
-      uses: actions/checkout@enhanced_runner_v2
+      uses: actions/checkout@main
       with:
         name: BrowserStackCE/bstack-cucumber-cli-runner
         ref: refs/heads/release
