@@ -1,4 +1,4 @@
-<h1 align="center">   :zap: <img src="https://avatars.githubusercontent.com/u/1119453?s=200&v=4" width="60" height="60" > <a href="https://github.com/browserstackce/browserstack-examples-cucumber-cli">BrowserStack Examples Cucumber CLI</a>  <img src="https://avatars.githubusercontent.com/u/320565?s=200&v=4" width="60" height="60" >
+<h1 align="center">   :zap: <img src="https://www.browserstack.com/images/static/header-logo.jpg" height="40" > <a href="https://github.com/browserstackce/browserstack-examples-cucumber-cli">BrowserStack Examples Cucumber CLI</a>  <img src="https://avatars.githubusercontent.com/u/320565?s=200&v=4" width="60" height="60" >
  :zap:</h1>
 
 Welcome to BrowserStack Examples Cucumber CLI, a sample [Cucumber CLI Runner](https://github.com/browserstackce/bstack-cucumber-cli-runner) test repository.
